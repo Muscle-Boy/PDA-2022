@@ -1,2 +1,3 @@
 # PDA-2022
-Platform for Disinformation Analytics
+A Platform to Detect Disinformation in Texts, Articles and even Images. <br/>
+<b />PLEASE SEE: In-depth information about PDA's different modules can be found in the other branches of this repository!
