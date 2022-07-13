@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "Main_Branch, Disinformation_Branch" ]
+    branches: [ "Main_Branch" ]
 
 jobs:
 
