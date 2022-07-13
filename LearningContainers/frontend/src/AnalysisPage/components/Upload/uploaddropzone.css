@@ -1,0 +1,128 @@
+/* .wholeThing { */
+    /* background:url('../../..//images/background.jpg') */
+    /* center center/cover no-repeat; */
+  /* } */
+  
+  .upload-container {
+    height: 100vh;
+    width: 100vw;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 110px 20px 10px 20px;
+    /* background-color: #ffffff; */
+  }
+  
+  .upload-row {
+    width: 100%;
+  }
+  
+  .upload-column {
+    margin-top: 20px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .upload-button {
+    position: relative;
+    text-align: center;
+    margin-top: 3px;
+  }
+  
+  .uploaded-files {
+    width: 100%;
+  }
+  
+  .uploaded-files-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(168, 178, 209);
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .uploaded-files-header h2 {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .uploaded-files-subheader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+  }
+  
+  .uploaded-files .divider {
+    background-color: rgb(168, 178, 209);
+  }
+  
+  .uploaded-file-container {
+    color: rgb(168, 178, 209);
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(23, 42, 69);
+    padding: 10px;
+    border-radius: 3px;
+    box-shadow: rgba(2, 12, 27, 0.7) 0px 10px 30px -15px;
+  }
+  
+  .uploaded-file {
+    display: flex;
+    align-items: center;
+  }
+  
+  .uploaded-file-details {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+  }
+  
+  .delete-uploaded-file:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+  
+  .existing-section {
+    width: 100%;
+    height: 100%;
+    color: rgb(168, 178, 209);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .existing-section h2 {
+    font-family: 'Poppins', sans-serif;
+    align-self: flex-start;
+  }
+  
+  .or-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    width: 100%;
+  }
+  
+  .or-section .orDivider {
+    width: calc(50% - 20px);
+    background-color: rgb(168, 178, 209);
+  }
+  
+  .or-section span {
+    margin: 0px 20px;
+    color: rgb(168, 178, 209);
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+  }
+  

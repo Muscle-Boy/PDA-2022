@@ -1,0 +1,59 @@
+.dropzone {
+    position: relative;
+    height: 30vw;
+    width: 30vw;
+    /* background-color: #fff; */
+    /* border: 2px dashed rgb(187, 186, 186); */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 16px;
+  }
+  
+  .local-dropzone {
+    position: relative;
+    width: 100%;
+    /* background-color: #fff; */
+    /* border: 2px dashed rgb(187, 186, 186); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size: 16px;
+  }
+  
+  .dropzone span {
+    text-align: center;
+    color:#66FCF1;
+    margin-top: 4%;
+  
+  }
+  
+  .activeStyle {
+    border-color: #2196f3;
+  }
+  
+  .acceptStyle {
+    border: 3px dashed #00e676;
+  }
+  
+  .rejectStyle {
+    border: 3px dashed #ff1744;
+  }
+  
+  .footnote-text {
+    font-size: 10px;
+    text-align: center;
+  }
+  
+  .logo-image {
+    height:70%;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    overflow: hidden;
+  }
+  

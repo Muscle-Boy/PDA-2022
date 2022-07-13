@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: backend-server
+  template:
+    metadata:
+      labels:
+        app: backend-server
+    spec:
+      containers:
+      - name: backend
+        image: ryanangweihao/rang012_docker_repository:main-6f2280e
+        ports:
+        - containerPort: 8010
+      imagePullSecrets:
+      - name: regcred

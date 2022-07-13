@@ -1,0 +1,7 @@
+FLASK
+activate venv --> demo\scripts\activate
+set FLASK_APP=app
+flask run
+open http://127.0.0.1:5000/ on server
+
+RUN DOCKER

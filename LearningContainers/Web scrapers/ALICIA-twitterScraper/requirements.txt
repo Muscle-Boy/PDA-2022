@@ -1,0 +1,7 @@
+selenium
+pandas
+python-dotenv
+twython
+Pillow
+flask
+Flask-Cors

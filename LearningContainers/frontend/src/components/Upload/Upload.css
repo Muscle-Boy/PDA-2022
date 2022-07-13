@@ -1,0 +1,137 @@
+/* input:focus ~ .floating-label,
+input:not(:focus):valid ~ .floating-label {
+top: 8px;
+bottom: 10px;
+left: 20px;
+font-size: 11px;
+opacity: 1;
+}
+
+.inputText {
+font-size: 14px;
+width: 200px;
+height: 35px;
+}
+
+.floating-label {
+position: absolute;
+pointer-events: none;
+left: 20px;
+top: 18px;
+transition: 0.2s ease all;
+}
+
+h1 {
+color: blue;
+} */
+
+body {
+    margin: 0;
+    padding: 0%;
+    font-family: sans-serif;
+/*       background: url(https://media.istockphoto.com/photos/modern-living-room-interior-3d-render-picture-id1293762741?b=1&k=20&m=1293762741&s=170667a&w=0&h=2RI8SmBN4MrEZuTvdwRzaeB887x-dukFcQBpyQ-qwS4=);*/
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+}
+
+.box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    background: #ffff;
+    padding: 40px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2);
+}
+
+.box h2,
+h1 {
+    margin: 0 0 40px;
+    padding: 0;
+    text-transform: uppercase;
+    color: black;
+}
+
+.box input ,
+.box textarea{
+    padding: 12px 0;
+    margin-bottom: 30px;
+    width: 100%;
+    box-sizing: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+}
+
+.box input[type="submit"] {
+    width:30%;
+    border-bottom: none;
+    cursor: pointer;
+    background: burlywood;
+    color: black;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    background-color:white;
+   
+}
+.box input[type="submit"]:hover {
+
+    background-color:black;
+    color:white;
+    transition: all 0.5s ease-out;
+    
+    
+}
+
+.box form div {
+    position: relative;
+}
+
+.box form div label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #999;
+    transition: 0.5s;
+    pointer-events: none;
+}
+
+.box input:valid ~ label,
+.box textarea:valid ~ label,
+.box textarea:focus ~ label,
+.box input:focus ~ label
+
+{
+    top: -12px;
+    left: 0;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.box input:focus,
+.box textarea:focus,
+.box input:valid,
+.box textarea:valid
+{
+    border-bottom: 2px solid black;
+}
+
+.box input[type="submit"]{
+    border: 1px solid black;
+}
+.backgroundcontactus{
+    background-color: blue;
+    position: absolute;
+    /* top:180px; */
+    width:100%;
+    height:100%;
+}
+
+
+
+
+

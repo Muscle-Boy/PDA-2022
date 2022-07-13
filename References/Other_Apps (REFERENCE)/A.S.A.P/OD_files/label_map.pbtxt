@@ -1,0 +1,34 @@
+item { 
+	name:'Soldier'
+	id:1
+}
+item { 
+	name:'Civilian'
+	id:2
+}
+item {
+  name:'Tank'
+  id:3
+}
+item {
+  name:'Weapon'
+  id:4
+}
+item {
+  name:'Artillery'
+  id:5
+}
+item {
+  name:'Armoured Vehicle'
+  id:6
+}
+item {
+  name:'Helicopter'
+  id:7
+}
+item {
+  name:'Cargo Aircraft'
+  id:8
+}
+
+

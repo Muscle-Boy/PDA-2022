@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: asap-deployment
+  labels:
+    app: asap
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: asap
+  template:
+    metadata:
+      labels:
+        app: asap
+    spec:
+      containers:
+      - name: web-app
+        image: ryanangweihao/rang012_docker_repository:main-a9523f6
+        ports:
+        - containerPort: 8050
+      imagePullSecrets:
+      - name: regcred
