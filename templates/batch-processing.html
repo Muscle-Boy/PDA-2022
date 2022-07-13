@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/batch-processing.css') }}">
+
+{% endblock %} 
+
+{% block content %}
+
+
+  <div id="text-input-block">
+    <form method="POST">
+        <label for="userExcel">Choose Excel file to upload</label>
+        <input type="file" name="userExcel" accept="./xlsx" required>
+    </form>
+  </div>
+
+{% endblock %}

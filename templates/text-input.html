@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/text-input.css') }}">
+
+{% endblock %} 
+
+
+{% block content %}
+  <script>
+    function fileValidation() {
+      var file = document.getElementById('your_form');
+      var file_input = file.value;
+      var allowedFiles = /(\.csv|\.xlsx)$/i;
+
+      if(!allowedFiles.exec(file_input))
+      {
+        alert("Please input excel file")
+        file_input.value= '';
+        return false
+      }
+    }
+  </script>
+
+  <section>
+    <div class="text-input-main">
+
+      <div id="text-input-results-block">
+        <a href="/text-input/results">
+          <h4>&#x21b3 Go to Results</h4>
+        </a>
+      </div>
+
+      <div id="text-input-block">
+        <form method="POST">
+          <textarea name="text" placeholder="Input Text Here" rows="10" cols="109" required></textarea>
+          
+          <fieldset>
+            <legend>Choose your trusted sources</legend>
+            <div>
+              <input type="checkbox" id="CNA" name="CNA" checked>
+              <label for="CNA">CNA</label>
+            </div>
+            <div>
+              <input type="checkbox" id="today" name="today">
+              <label for="today">today</label>
+            </div>
+            <div>
+              <input type="checkbox" id="gov.sg" name="gov.sg">
+              <label for="gov.sg">gov.sg</label>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <div>
+              <legend>Choose the Number of Articles to Compare with (Recommended: 3~10)</legend>
+              <input type="text" name="article_count">
+            </div>
+          </fieldset>
+          
+          <input class="submit_button" type="submit">
+        </form>
+      </div>
+    
+    </div>
+  </section>
+{% endblock %}

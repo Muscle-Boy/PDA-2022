@@ -1,0 +1,128 @@
+html {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: #A8D0E6;
+}
+
+nav {
+    text-decoration: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: black;
+    padding-top: 2.5%;
+    padding-bottom: 1%;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+#logo-div{
+    display:flex;
+    justify-content: center;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#logo {
+    padding-bottom: 10px;
+}
+
+#bottomnav {
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 1px black;
+
+}
+
+#bottomnav #navflex {
+    color: black;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-top: 1.4%;
+    padding-bottom: 1.4%;
+
+}
+
+#navflex a {
+    color: black;
+    width: 50px;
+    text-decoration: none;
+}
+
+#navflex a:hover {
+    color: grey;
+    padding-bottom: 10px;
+    transition: all 0.3s ease-out;
+
+}
+
+
+body {
+    overflow-x: hidden;
+}
+
+#policebg {
+    background-image: url('../images/policebg.jpg') ;
+    min-width: 140px;
+    /* max-width: 1340px;
+    width:1440px; */
+    min-height: 511px;
+    background-attachment: scroll;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#policebg p {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+#policebg #text {
+    padding: 4%;
+}
+
+#policebg #header {
+
+    font-size: 33px;
+    padding-top: 13%;
+}
+
+#policebg #para {
+
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 12px;
+    position: relative;
+    bottom: 32px;
+
+}
+
+#bodytwo h1 {
+    padding: 10%;
+}
+
+#bodytwo {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#bodyworkflow h1 {
+    display: flex;
+    justify-content: center;
+    ;
+}
+
+#label-entertwo {
+    display: block;
+    background-color: transparent;
+
+}
