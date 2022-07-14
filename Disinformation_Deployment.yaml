@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: disinformation
-        image: ryanangweihao/rang012_docker_repository:Disinformation_JIECHUNG
+        image: tegexplore/pda-2022:disinformation_branch-3db0d57
         ports:
         - containerPort: 8020
       imagePullSecrets:
