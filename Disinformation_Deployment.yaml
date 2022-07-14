@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: disinformation-deployment
+  labels:
+    app: disinformation-server
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: disinformation-server
+  template:
+    metadata:
+      labels:
+        app: disinformation-server
+    spec:
+      containers:
+      - name: disinformation
+        image: ryanangweihao/rang012_docker_repository:Disinformation_JIECHUNG
+        ports:
+        - containerPort: 8020
+      imagePullSecrets:
+      - name: dockercred
