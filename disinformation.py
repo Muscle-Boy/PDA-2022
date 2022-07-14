@@ -5,7 +5,7 @@ from datetime import datetime
 
 # _____________________________________________ Flask Configurations ________________________________________________
 
-IS_LOCAL_DEPLOYMENT = True
+IS_LOCAL_DEPLOYMENT = False
 
 app = Flask(__name__)
 
