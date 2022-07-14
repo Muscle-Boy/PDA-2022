@@ -4,7 +4,7 @@ import pandas as pd
 
 # _____________________________________________ Flask Configurations ________________________________________________
 
-IS_LOCAL_DEPLOYMENT = True
+IS_LOCAL_DEPLOYMENT = False
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = '1da204f539bfd15c3c5a85e1397f8052'
