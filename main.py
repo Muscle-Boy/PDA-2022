@@ -18,7 +18,7 @@ app = Flask(__name__)
 if IS_LOCAL_DEPLOYMENT:
     app.config["MONGO_URI"] = "mongodb://localhost:27017/local"
 else:
-    app.config["MONGO_URI"] = "mongodb://mongo-service:5030/local"
+    app.config["MONGO_URI"] = "mongodb://mongo-service.default.svc.cluster.local:5030/local"
 
 mongo = PyMongo(app)
 TextInputDB = mongo.db.TextInputDB
