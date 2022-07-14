@@ -8,28 +8,13 @@
 
 
 {% block content %}
-  <script>
-    function fileValidation() {
-      var file = document.getElementById('your_form');
-      var file_input = file.value;
-      var allowedFiles = /(\.csv|\.xlsx)$/i;
-
-      if(!allowedFiles.exec(file_input))
-      {
-        alert("Please input excel file")
-        file_input.value= '';
-        return false
-      }
-    }
-  </script>
-
   <section>
     <div class="text-input-main">
 
       <div id="text-input-results-block">
-        <a href="/text-input/results">
-          <h4>&#x21b3 Go to Results</h4>
-        </a>
+        <h4>
+          <a href="/text-input/results">&#x21b3 Go to Results</a>
+        </h4>
       </div>
 
       <div id="text-input-block">
@@ -45,10 +30,6 @@
             <div>
               <input type="checkbox" id="today" name="today">
               <label for="today">today</label>
-            </div>
-            <div>
-              <input type="checkbox" id="gov.sg" name="gov.sg">
-              <label for="gov.sg">gov.sg</label>
             </div>
           </fieldset>
 

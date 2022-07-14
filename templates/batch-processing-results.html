@@ -2,8 +2,20 @@
 
 {% block head %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/batch-processing-results.css') }}">
+
 {% endblock %}
 
 {% block body %}
-    
+    <section>
+        <div class="batch-processing-main-results">
+
+        <div id="batch-processing-results-back-block">
+            <a href="/batch-processing">
+            <h4>Back to Batch Processing &#x21b2</h4>
+            </a>
+        </div>
+
+        </div>
+    </section>
 {% endblock %}

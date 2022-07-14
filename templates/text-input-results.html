@@ -2,8 +2,44 @@
 
 {% block head %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/text-input-results.css') }}">
+
 {% endblock %}
 
 {% block body %}
-    
+    <section>
+        <div class="text-input-main-results">
+
+            <div id="text-input-results-back-block">
+                <a href="/text-input">
+                    <h4>Back to Text Input &#x21b2</h4>
+                </a>
+            </div>
+
+            {% if result_list %}
+                {% for Result in result_list %}
+                    <div id="text-input-article-block">
+                    <p>{{ Result.date_created }}</p>
+                    <p>{{ Result.result }}</p>
+                    <p>{{ Result.input_text }}</p>
+                    <p>{{ Result.search_term }}</p>
+                        {% for Article in Result.Articles %}
+                        <div>
+                            <p>{{ Article.title }}</p>
+                            <p>{{ Article.similarity_score }}</p>
+                            <p>{{ Article.url }}</p>
+                            <p>{{ Article.summarized_article }}</p>
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+
+            {% else %}
+            <div id="text-input-empty-block">
+                <h2>Unable to find any results in Database</h2>
+            </div>
+            {% endif %}
+
+        </div>
+    </section>
 {% endblock %}

@@ -1,17 +1,22 @@
-from flask import Flask, render_template, url_for, request, redirect, flash
+from flask import Flask, render_template, request, redirect, flash
 import requests
+import pandas as pd
 
-# _____________________________________________ Flask Configurations _____________________________________________
+# _____________________________________________ Flask Configurations ________________________________________________
+
+IS_LOCAL_DEPLOYMENT = True
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = '1da204f539bfd15c3c5a85e1397f8052'
+ALLOWED_EXTENSIONS = {'xlsx'}
 
-# _____________________________________________ Mainpage Route _____________________________________________
+# _____________________________________________ Mainpage Route ______________________________________________________
 
 @app.route('/', methods=['GET'])
 def homepage():
     return render_template('index.html')
 
-# _____________________________________________ Text Input Routes _____________________________________________
+# _____________________________________________ Text Input Routes ___________________________________________________
 
 @app.route('/text-input', methods=['GET', 'POST'])
 def text_input():
@@ -24,55 +29,123 @@ def text_input():
 
         input_json = {}
         input_json["input_text"] = res_dict['text']
-        input_json["trusted_sources"] = list(res_dict)
         input_json["article_count"] = int(res_dict['article_count'])
 
-        response = requests.post('http://localhost:8010/text-input', json=input_json)
-        
-        return 0
+        trusted_sources = list(res_dict)
+        trusted_sources.remove('text')
+        trusted_sources.remove('article_count')
+        input_json["trusted_sources"] = trusted_sources
+
+        # print(f'res_dict is {res_dict}')
+        # print(f'input_json is {input_json}')
+
+        if IS_LOCAL_DEPLOYMENT:
+            response = requests.post('http://localhost:8010/text-input', json=input_json)
+        else:
+            response = requests.post('http://main-service:5010/text-input', json=input_json)
+
+        return redirect('/text-input')
 
 
 @app.route('/text-input/results', methods=['GET'])
 def text_input_results():
 
-    response = requests.get('http://localhost:8010/text-input/results')
-
+    if IS_LOCAL_DEPLOYMENT:
+        response = requests.get('http://localhost:8010/text-input/results')
+    else:
+        response = requests.get('http://main-service:5010/text-input/results')
     result_list = response.json()
 
-    return render_template('text-input-results.html')
+    return render_template('text-input-results.html', result_list=result_list)
 
 
-@app.route('/text-input/results/<id>', methods=['GET'])
+@app.route('/text-input/results/<id>', methods=['GET', 'DELETE'])
 def text_input_results_indiv(id):
 
-    response = requests.get('http://localhost:8010/text-input/results/'+f'{id}')
+    if request.method == 'GET':
+        if IS_LOCAL_DEPLOYMENT:
+            response = requests.get('http://localhost:8010/text-input/results/'+f'{id}')
+        else:
+            response = requests.get('http://main-service:5010/text-input/results/'+f'{id}')
 
-    result = response.json()
+        result = response.json()
 
-    return render_template('text-input-results-indiv.html')
+        return render_template('text-input-results-indiv.html', result=result)
+
+    elif request.method == 'DELETE':
+        if IS_LOCAL_DEPLOYMENT:
+            response = requests.delete('http://localhost:8010/text-input/results/'+f'{id}')
+        else:
+            response = requests.delete('http://main-service:5010/text-input/results/'+f'{id}')
+
+        return redirect('/text-input/results')
 
 # _____________________________________________ Batch Processing Routes _____________________________________________
 
 @app.route('/batch-processing', methods=['GET', 'POST'])
 def batch_processing():
+
     if request.method == 'GET':
+
         return render_template('batch-processing.html')
 
     elif request.method == 'POST':
+
+        file = request.files['file']
+        if file.filename == '':
+            flash('No selected file')
+            return redirect(request.url)
+
+        if file and allowed_file(file.filename):
+            df = pd.read_excel(file, index_col=None, header=None)
+            input_list = df[0].tolist()
+            input_json = [{ "input_text" : input_text } for input_text in input_list]
+
+        if IS_LOCAL_DEPLOYMENT:    
+            response = requests.post('http://localhost:8010/batch-processing', json=input_json)
+        else:
+            response = requests.post('http://main-service:5010/batch-processing', json=input_json)
+
+        if response.status_code == 201:
+            return redirect(request.url)
+
+        elif response.status_code == 404:
+            return redirect(request.url)
         
-        return 0
+        return redirect(request.url)
 
 
 @app.route('/batch-processing/results', methods=['GET'])
 def batch_processing_results():
-    return render_template('batch-processing-results.html')
+
+    if IS_LOCAL_DEPLOYMENT:
+        response = requests.get('http://localhost:8010/batch-processing/results/'+f'{id}')
+    else:
+        response = requests.get('http://main-service:5010/batch-processing/results/'+f'{id}')
+
+    result = response.json()
+
+    return render_template('batch-processing-results.html', result=result)
 
 
-@app.route('/batch-processing/results/<id>', methods=['GET'])
+@app.route('/batch-processing/results/<id>', methods=['GET', 'DELETE'])
 def batch_processing_results_indiv(id):
+
+    if IS_LOCAL_DEPLOYMENT:
+        response = requests.delete('http://localhost:8010/batch-processing/results/'+f'{id}')
+    else:
+        response = requests.delete('http://main-service:5010/batch-processing/results/'+f'{id}')
+
     return render_template('batch-processing-results-indiv.html')
 
-# _____________________________________________ Helper Functions _____________________________________________
+# _____________________________________________ Helper Functions ____________________________________________________
+
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+    if IS_LOCAL_DEPLOYMENT:
+        app.run(debug=True, port=8000) # host="0.0.0.0"
+    else:
+        app.run(host="0.0.0.0", port=8000)

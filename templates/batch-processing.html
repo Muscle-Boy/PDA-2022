@@ -8,12 +8,24 @@
 
 {% block content %}
 
+  <section>
+    <div class="batch-processing-main">
 
-  <div id="text-input-block">
-    <form method="POST">
-        <label for="userExcel">Choose Excel file to upload</label>
-        <input type="file" name="userExcel" accept="./xlsx" required>
-    </form>
-  </div>
+        <div id="batch-processing-results-block">
+            <a href="/batch-processing/results">
+                <h4>&#x21b3 Go to Results</h4>
+            </a>
+        </div>
+
+        <div id="batch-processing-block">
+            <form method="POST" enctype="multipart/form-data">
+                <label for="file">Choose Excel file to upload</label>
+                <input type="file" name="file" accept="./xlsx" required>
+                <input class="submit_button" type="submit">
+            </form>
+        </div>
+
+    </div>
+  </section>
 
 {% endblock %}
