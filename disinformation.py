@@ -92,4 +92,4 @@ if __name__ == "__main__":
     if IS_LOCAL_DEPLOYMENT:
         app.run(debug=True, port=8020) # host="0.0.0.0"
     else:
-        app.run(host="0.0.0.0", port=5020)
+        app.run(host="0.0.0.0", port=8020)
