@@ -7,11 +7,11 @@ WORKDIR $APP_HOME
 COPY . ./
 
 
-RUN sudo apt update     
+RUN apt update     
 
-RUN sudo apt install mongodb -y
+RUN apt install mongodb -y
 
-RUN sudo systemctl start mongodb
+RUN systemctl start mongodb
 
 
 RUN pip install --upgrade pip
