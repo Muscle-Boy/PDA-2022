@@ -11,7 +11,7 @@ RUN apt update
 
 RUN apt install mongodb -y
 
-RUN systemctl start mongodb
+RUN service mongodb start
 
 
 RUN pip install --upgrade pip
