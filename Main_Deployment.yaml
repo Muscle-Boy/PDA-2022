@@ -5,7 +5,7 @@ metadata:
   labels:
     app: main-server
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: main-server
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: main
-        image: tegexplore/pda-2022:main_branch-9f76563
+        image: ....
         ports:
         - containerPort: 8010
       imagePullSecrets:
