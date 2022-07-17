@@ -10,7 +10,7 @@ COPY . ./
 RUN apt update     
 
 RUN apt install mongodb -y && apt install python3-pip -y \
-apt install curl -y
+&& apt install curl -y
 
 RUN service mongodb start
 
