@@ -5,7 +5,7 @@ metadata:
   labels:
     app: disinformation-server
 spec:
-  replicas: 3
+  replicas: 1   # Always set it to '1' if you are testing it out
   selector:
     matchLabels:
       app: disinformation-server
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: disinformation
-        image: tegexplore/pda-2022:disinformation_branch-3db0d57
+        image: ...
         ports:
         - containerPort: 8020
       imagePullSecrets:
