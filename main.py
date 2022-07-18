@@ -146,6 +146,6 @@ def parse_json(data):
 
 if __name__ == "__main__":
     if IS_LOCAL_DEPLOYMENT:
-        app.run(debug=True, port=8010) # host="0.0.0.0"
+        app.run(host="0.0.0.0", port=8010) # host="0.0.0.0"
     else:
         app.run(host="0.0.0.0", port=8010)
