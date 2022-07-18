@@ -31,11 +31,7 @@ def text_input():
 
     try:
         input_json = request.get_json()
-
-        if IS_LOCAL_DEPLOYMENT:
-            response = requests.post('http://localhost:8020/text-input', json=input_json)
-        else:
-            response = requests.post('http://disinformation-service:5020/text-input', json=input_json)
+        response = requests.post('http://disinformation-service:5020/text-input', json=input_json)
         if response.status_code == 200:
             output_json = response.json()
         elif response.status_code == 404:
