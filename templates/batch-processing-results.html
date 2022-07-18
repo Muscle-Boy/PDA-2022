@@ -10,11 +10,54 @@
     <section>
         <div class="batch-processing-main-results">
 
-        <div id="batch-processing-results-back-block">
-            <a href="/batch-processing">
-            <h4>Back to Batch Processing &#x21b2</h4>
-            </a>
-        </div>
+            <div id="batch-processing-results-back-block">
+                <a href="/batch-processing">
+                <h4>Back to Batch Processing &#x21b2</h4>
+                </a>
+            </div>
+
+            {% if result_list %}
+
+                {% for Result in result_list %}
+                    <form method="POST" class="formcard">
+                        <div id="batch-processing-article-block">
+                            <button name="id" value="{{ Result._id }}" type="submit"><img src="../static/images/delete.png" alt="Delete"></button>
+                            <p>Date Created: {{ Result.date_created }}</p>
+                            <p>ID: {{ Result._id }}</p>
+
+                            <div id="overflowtable">
+                                <table>
+                                    <tr>
+
+                                        <th>Reference Text</th>
+                                        <th>Disinformation Score</th>
+                                        <th>Sentiment Score</th>
+                                        
+                                    </tr>
+                                    
+                                    {% for indiv in Result.batch_result_list %}
+                                        
+                                    <tr>
+                                    
+                                    <td>{{ indiv.input_text }}</td>
+                                    <td>{{ indiv.result }}</td>
+                                    <td>{{ indiv.sentiment_score }}% {{ indiv.sentiment_label }}</td>
+
+                                    </tr>
+
+                                    {% endfor %}
+                                        
+                                </table>
+                            </div>  
+                        </div> 
+                    </form>
+                {% endfor %}
+
+            {% else %}
+            <div id="batch-processing-empty-block">
+                <h2>No Entries found in Database</h2>
+            </div>
+            {% endif %}
 
         </div>
     </section>

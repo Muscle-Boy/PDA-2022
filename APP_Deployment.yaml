@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app
-        image: tegexplore/pda-2022:app_branch-7eab9f8
+        image: ryanangweihao/rang012_docker_repository:Disinformation_JIECHUNG
         ports:
         - containerPort: 8000
       imagePullSecrets:

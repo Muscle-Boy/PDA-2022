@@ -4,6 +4,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+        <link rel = "icon" href = "../static/images/pdawhite.png" type = "image/x-icon">
     
         {% block head %}
         {% endblock %}
@@ -15,11 +16,11 @@
     <section>
         <nav>
         <div id="logo-div">
-            <a href="/"><img id="logo" src="{{ url_for('static', filename='images/pda.png') }}" /></a>
+            <a href="/"><img id="logo" src="../static/images/pda.png" /></a>
         </div>
         <div id="bottomnav">
             <div id="navflex">
-            <a href="/">HOME</a>
+            <a href="/">    HOME    </a>
             </div>
             <div id="navflex">
             <a href="/text-input">TEXT INPUT</a>
@@ -38,4 +39,8 @@
     {% endblock %}
 
     </body>
+    <footer>
+        <p>Made by PDA team 2022. All rights reserved</p>
+    </footer>
+ 
 </html>

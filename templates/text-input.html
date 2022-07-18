@@ -3,47 +3,110 @@
 {% block head %}
 
 <link rel="stylesheet" href="{{ url_for('static', filename='css/text-input.css') }}">
+<script type = "text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>  
 
 {% endblock %} 
 
 
 {% block content %}
-  <section>
+  <section class="analysisbg">
     <div class="text-input-main">
-
-      <div id="text-input-results-block">
-        <h4>
-          <a href="/text-input/results">&#x21b3 Go to Results</a>
-        </h4>
-      </div>
-
-      <div id="text-input-block">
-        <form method="POST">
-          <textarea name="text" placeholder="Input Text Here" rows="10" cols="109" required></textarea>
-          
-          <fieldset>
-            <legend>Choose your trusted sources</legend>
-            <div>
-              <input type="checkbox" id="CNA" name="CNA" checked>
-              <label for="CNA">CNA</label>
+        
+        <a href="/text-input/results">
+            <div id="text-input-results-block">
+                &#x21b3 Go to Results
             </div>
-            <div>
-              <input type="checkbox" id="today" name="today">
-              <label for="today">today</label>
-            </div>
-          </fieldset>
+        </a>
 
-          <fieldset>
-            <div>
-              <legend>Choose the Number of Articles to Compare with (Recommended: 3~10)</legend>
-              <input type="text" name="article_count">
-            </div>
-          </fieldset>
-          
-          <input class="submit_button" type="submit">
-        </form>
-      </div>
+        <div class="box">
+                            
+            <h2 id="da-title">Disinformation Analysis</h2>
+
+            <form method="post" onsubmit="saved(event)">
+                
+                <label class="labelsonforms"><b>Text Input</b></label><br/><br/>
+                <div>
+                <textarea name="text"  pattern=".{3,}" rows="10" cols="109" required autofocus></textarea>
+            
+                <br/>
+                <label>Enter : </label>
+                </div>
+                <label class="labelsonforms"><b>Choose your trusted sources: </b></label><br/><br/>
+                <div id="flexcheckboxes" class="checkbox-group required">
+                    <div class="cb_option" onclick="cbOptionClicked(event)">
+                        <input type="checkbox"  id="CNA" name="CNA" value="CNA" checked>
+                        <label for="ossm">CNA</label>
+                    </div>
+                    <div class="cb_option" onclick="cbOptionClicked(event)">
+                        <input type="checkbox" id="today" name="today" value="today">
+                        <label for="vehicle2">todayonline</label>
+                    </div>
+                </div>
+                <br/>
+                <label class="labelsonforms">
+                    <b>Choose the Number of Articles to Compare with </b><br/><br/>
+                    <i>(Note: A higher number of articles may result in 
+                    a more accurate score, but will result in longer waiting time)</i>
+                </label><br/><br/>
+                <div>
+                    <!--<label>Articles No.</label>-->
+                    <select name="article_count" id="article_count">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+
+                    </select>
+                </div>
+            
     
+                <input type="submit" value="Submit">
+            </form>
+            <br>
+                
+        </div>
     </div>
   </section>
+
+  <script>
+    var cb_options = document.getElementsByClassName("cb_option");
+
+    function cbOptionClicked(e){
+        var option = e.target
+
+        if(option.classList.contains("cb_option")){
+            //console.log(e.path[1])
+            if(option.classList.contains("clicked")){
+                option.classList.remove("clicked")
+                option.childNodes[1].checked = false;
+            } else {
+                option.classList.add("clicked")
+                option.childNodes[1].checked = true;
+            }
+
+            //console.log(option.childNodes)
+        }
+
+    }
+
+    function saved(e){
+        e.preventDefault();
+        var checkboxChecked = $('div.checkbox-group.required :checkbox:checked');
+        //console.log(e.target)
+        //console.log($('div.checkbox-group.required :checkbox:checked'))
+        if(checkboxChecked.length <= 0){
+            alert("Please select trusted source")
+        } else {
+            console.log(checkboxChecked);
+
+            console.log(e)
+            e.target.submit();
+        }
+    }
+    
+  </script>
 {% endblock %}

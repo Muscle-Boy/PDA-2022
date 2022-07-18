@@ -7,22 +7,44 @@
 {% endblock %} 
 
 {% block content %}
+    <script>
+        function fileValidation() {
+            var file = document.getElementById('your_form');
+            var file_input = file.value;
+            var allowedFiles = /(\.xlsx)$/i;
 
-  <section>
+            if(!allowedFiles.exec(file_input)) {
+                alert("Please input excel file")
+                file_input.value= '';
+                return false
+            }
+        }
+    </script>
+
+  <section class="analysisbg">
     <div class="batch-processing-main">
 
-        <div id="batch-processing-results-block">
-            <a href="/batch-processing/results">
-                <h4>&#x21b3 Go to Results</h4>
-            </a>
-        </div>
+        <a href="/batch-processing/results">
+            <div id="batch-processing-results-block">
+                &#x21b3 Go to Results
+            </div>
+        </a>
 
-        <div id="batch-processing-block">
+        <div class="box">
+
+            <h2 id="da-title">Disinformation Analysis</h2>
+
             <form method="POST" enctype="multipart/form-data">
-                <label for="file">Choose Excel file to upload</label>
+                <label class="labelsonforms"><b>Batch Processing</b></label><br/><br/>
+
+                <i>(Note: Only the First Column of the Excel will be read)</i><br/><br/>
+
+                <label for="file"><b>Upload a Excel file (./xlsx)</b></label>
                 <input type="file" name="file" accept="./xlsx" required>
-                <input class="submit_button" type="submit">
+                
+                <input type="submit" value="Submit">
             </form>
+
         </div>
 
     </div>

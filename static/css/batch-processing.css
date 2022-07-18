@@ -4,49 +4,114 @@
     margin-right: auto;
 }
 
-.batch-processing-main {
-    width: 60em;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .batch-processing-main a {
     text-decoration: none;
-    display: block;
+    color: white;
+}
+
+.batch-processing-main a:hover {
+    text-decoration: none;
+    color: black;
 }
 
 #batch-processing-results-block {
-    background-color: #DEF2F1;
+    background-color: black;
+    color: white;
     width: 10em;
     height: 2em;
     margin-left: auto;
     margin-bottom: 10px;
     border-radius: 10px;
-    border: 1px solid black;
+    position: relative;
+    top: 20px;
+
     box-sizing: border-box;
     box-shadow: 2px 5px #888888;
+    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-family: 'Times New Roman',
+        Times,
+        serif;
+    font-weight: 10;
 }
 
 #batch-processing-results-block:hover {
-    background-color: #def2f1ab;
+    background-color: white;
+    color: black;
+
+    border: 1px solid black;
 }
 
-#batch-processing-results-block:active {
+*/ #batch-processing-results-block:active {
     box-shadow: none;
     top: 5px;
 }
 
-#batch-processing-block {
-    background-color: #DEF2F1;
-    height: 25em;
-    border-radius: 25px;
-    border: 1px solid black;
+.analysisbg {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('../images/analysisbackground.jpg');
+
+    /* max-width: 1340px;
+    width:1440px; */
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box {
+    position: absolute;
+    top: 59%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: #ffff;
+    padding: 40px;
     box-sizing: border-box;
-    box-shadow: 5px 10px #888888;
-    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2);
     align-items: center;
-    justify-content: center;
+    margin-top: 100px;
+}
+
+.box h2{
+    padding: 10px;
+    text-transform: uppercase;
+    color: black;
+    font-size: 26px;
+    align-items: center;
+    text-align: center;
+    margin-top: 0;
+}
+
+.box input[type="file"] {
+    margin-top: 5px;
+}
+
+.box input[type="submit"] {
+    border-bottom: none;
+    cursor: pointer;
+    border: 1px solid black;
+    background: white;
+    color: black;
+    margin-top: 1em;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 12px 0;
+}
+
+.box input[type="submit"]:hover {
+
+    border: 1px solid white;
+    background: black;
+    color: white;
+    transition: 0.6s ease-out;
+}
+
+.labelsonforms {
+    padding-bottom: 100px;
 }

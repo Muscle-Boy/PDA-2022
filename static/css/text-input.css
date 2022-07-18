@@ -6,43 +6,231 @@
 
 .text-input-main a {
     text-decoration: none;
-    display: block;
+    color: white;
+}
+
+.text-input-main a:hover {
+    text-decoration: none;
+    color: black;
 }
 
 #text-input-results-block {
-    background-color: #DEF2F1;
+    background-color: black;
+    color: white;
     width: 10em;
     height: 2em;
     margin-left: auto;
     margin-bottom: 10px;
     border-radius: 10px;
-    border: 1px solid black;
+    position: relative;
+    top: 20px;
+
     box-sizing: border-box;
     box-shadow: 2px 5px #888888;
+    border: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    font-family: 'Times New Roman',
+        Times,
+        serif;
+    font-weight: 10;
 }
 
 #text-input-results-block:hover {
-    background-color: #def2f1ab;
+    background-color: white;
+    color: black;
+    border: 1px solid black;
 }
 
-#text-input-results-block:active {
+*/ #text-input-results-block:active {
     box-shadow: none;
     top: 5px;
 }
 
-#text-input-block {
-    background-color: #DEF2F1;
-    height: 25em;
-    border-radius: 25px;
-    border: 1px solid black;
+.analysisbg {
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1)), url('../images/analysisbackground.jpg');
+
+    /* max-width: 1340px;
+    width:1440px; */
+    min-height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box {
+    position: absolute;
+    top: 59%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: #ffff;
+    padding: 40px;
     box-sizing: border-box;
-    box-shadow: 5px 10px #888888;
-    display: flex;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 10px rgb(0, 0, 0, 0.2);
     align-items: center;
+    margin-top: 100px;
+}
+
+.box h2{
+    padding: 10px;
+    text-transform: uppercase;
+    color: black;
+    font-size: 26px;
+    align-items: center;
+    text-align: center;
+    margin-top: 0;
+}
+
+.box input[type="text"],
+.box textarea,
+.box select {
+    padding: 10px 0;
+    margin-bottom: 30px;
+    width: 100%;
+    box-sizing: none;
+    outline: none;
+    border: none;
+    border-bottom: 2px solid black;
+
+}
+
+textarea {
+    position: relative;
+    resize: none;
+    height: 100px;
+    width: 350px;
+    letter-spacing: 0.05em;
+    font-family: Arial, Helvetica, sans-serif;
+
+
+}
+
+.box input[type="submit"] {
+    border-bottom: none;
+    cursor: pointer;
+    border: 1px solid black;
+    background: white;
+    color: black;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    width: 100%;
+    padding: 12px 0;
+}
+
+.box input[type="submit"]:hover {
+
+    border: 1px solid white;
+    background: black;
+    color: white;
+    transition: 0.6s ease-out;
+}
+
+.box form div {
+    position: relative;
+}
+
+.box form div label {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    color: #999;
+    transition: 0.5s;
+    pointer-events: none;
+
+}
+
+.box input[type="text"]:focus~label,
+.box input[type="text"]:valid~label,
+.box textarea:focus~label,
+.box textarea:valid~label,
+.box select:focus~label,
+.box select:valid~label {
+    top: -12px;
+    left: 0;
+    color: black;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.box input[type="text"]:focus,
+.box input[type="text"]:valid,
+.box textarea:focus,
+.box textarea:valid {
+    border-bottom: 2px solid burlywood;
+}
+
+.box option {
+    padding: 100px;
+}
+
+#flexcheckboxes {
+    display: flex;
     justify-content: center;
+
+}
+
+/* .cb_option input[type="checkbox"] {
+    display: inline;
+
+} */
+
+
+
+.cb_option {
+    /* background-color: blue; */
+    border: 1px solid black;
+    /* width: fit-content; */
+    /* display: flex;
+    justify-content: space-around; */
+
+    padding-top: 20px;
+    padding-left: 68px;
+    padding-right: 68px;
+    margin-top: 2px;
+    /* border-radius: 20%; */
+    margin-left: 2px;
+    margin-right: 2px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    align-items: center;
+    align-content: center;
 }
 
 
+
+.cb_option input[type="checkbox"] {
+    visibility: hidden;
+}
+
+
+.cb_option.clicked {
+    border: 1px solid white;
+    background-color: black;
+}
+
+.cb_option.clicked label {
+    color: white;
+    background-color: black;
+}
+
+.cb_option label {
+    position: relative;
+    display: inline-block;
+    /* background-color: green; */
+    text-align: center;
+    width: 100%;
+    height: fit-content;
+
+}
+
+.labelsonforms {
+    padding-bottom: 100px;
+}

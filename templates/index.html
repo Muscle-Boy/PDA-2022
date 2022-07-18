@@ -7,28 +7,187 @@
 {% block body %}
     <section id="bodyone">
         <div id="policebg">
-        <div id="text">
-            <p id="header">PLATFORM FOR DISINFORMATION ANALYSIS</p>
-            <p id="para">Platform for Disinformation Analysis is built to detect disinformationin our news
-            <br/>
-            </p>
+            <div class="slideshow-container-two">
+
+                <div class="mySlidestwo fade">
+                    
+                    <img src="../static/images/background.jpg">
+                    <div class="texttwo"><p class="header">PLATFORM FOR DISINFORMATION ANALYSIS</p>
+                        <p class="para"><i>Solution to detect Disinformation</i>
+                        <br/>
+                        </p></div>
+                </div>
+        
+                <div class="mySlidestwo fade">
+                    
+                    <img src="../static/images/fakenewsbgthree.jpg">
+                    <div class="texttwo"><p class="header">PLATFORM FOR DISINFORMATION ANALYSIS</p>
+                        <p class="para"><i>Solution to detect Disinformation</i>
+                        <br/>
+                        </p></div>
+                </div>
+        
+                <div class="mySlidestwo fade">
+                    
+                    <img src="../static/images/fakenewsbgtwo.jpg">
+                    <div class="texttwo"><p class="header">PLATFORM FOR DISINFORMATION ANALYSIS</p>
+                        <p class="para"><i>Solution to detect Disinformation</i>
+                            <br/></div>
+                </div>
+        
+            </div>
+            <br>
+        
+            <div style="text-align:center">
+                <span class="dottwo"></span> 
+                <span class="dottwo"></span> 
+                <span class="dottwo"></span> 
+            </div>
+            
+      
         </div>
-        </div>
+       
     </section>
 
     <section id="bodytwo">
-        <div className="featureflex">
-        <h1>FEATURES</h1>
-        <p>presentation slides/how the model works</p>
+
+        <div class="featureflex">
+
+            <div class="featurecontent">
+                <b><h1>FEATURES</h1>
+                    
+                </b>
+               
+                <div class="featurebody-flexhor">
+                <div class="featurepara">
+                    <img src="../static/images/hoax.png" alt="hoax" class="hoax">
+                    <h2>Disinformation Analysis</h2>
+                    <p>Detect fake information related to the input</p>
+
+                </div>
+                <div class="featurepara">
+                    <img src="../static/images/statistic.png" alt="hoax" class="hoax">
+                    <h2>Sentiment Extraction</h2>
+                    <p>Identify and study states from input document</p>
+                </div>
+                <div class="featurepara">
+                    <img src="../static/images/table.png" alt="hoax" class="hoax">
+                    <br><h2>Summary</h2><br>
+                     <p> Extract a concise overview of input document for users.</p>
+                </div>
+            </div>
+            
+            </div>
         </div>
-        <div className="featureflex">
-        <div></div>
+        
+        <div class="slideshows">
+        <div class="workflow"><h1>WORKFLOW</h1></div>
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="../static/images/TextInputImg.png" alt="slide1">
+
+                <div class="captext"><b>Text Input</b><br>Text Input allows the processing of a single text, where Trusted Sources and Article Count can be specified. </div>
+                
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="../static/images/BatchProcessingImg.png" alt="slide1">
+
+                <div class="captext"><b>Upload Files</b><br>Batch Processing allows the user to upload an excel file to search multiple texts at once. </div>
+                
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="../static/images/ResultsPageImg.png" alt="slide2">
+
+                <div class="captext"><b>View Results</b><br>Results page provides a detailed overview of the results of our Disinformation Analysis. </div>
+               
+            </div>
+
+            <div id="spacebetweenbuttons">
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
         </div>
+
+    </div>
+    <div id="credit">
+            <h1>CREDITS</h1>
+            <div class="creditcontent">
+                <div class="creditimgname">
+                    <img src="../static/images/juncao.jpg" alt="Jun Cao" title="Jun Cao">
+                    <p>Jun Cao</p>
+                </div>
+                <div class="creditimgname">
+                    <img src="../static/images/regine.jpg" alt="Regine" title="Regine">
+                    <p>Regine</p>
+                </div>
+                <div class="creditimgname">
+                    <img src="../static/images/jiechung.png" alt="Jie Chung" title="Jie Chung">
+                    <p>Jie Chung</p>
+                </div>
+                
+
+            </div>
+
+    </div>
+       
     </section>
 
-    <section id="bodyworkflow">
-        <h1>Workflow</h1>
-
-        <h1>Credit</h1>
-    </section>
+    <script>
+        //manual
+        var slideIndex = 1;
+        showSlides(slideIndex);
+    
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+    
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+    
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            
+            if (n > slides.length) {slideIndex = 1}    
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+           
+            slides[slideIndex-1].style.display = "block";  
+            
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    
+        //auto
+    
+        var slideIndextwo = 1;
+        showSlidestwo();
+    
+        function showSlidestwo() {
+            var f;
+            var slidestwo = document.getElementsByClassName("mySlidestwo");
+            let dots = document.getElementsByClassName("dottwo");
+             
+            for (f = 0; f < slidestwo.length; f++) {
+                slidestwo[f].style.display = "none";  
+            }
+            slideIndextwo++;
+            if (slideIndextwo > slidestwo.length) {slideIndextwo = 1}    
+            for (f = 0; f < dots.length; f++) {
+                dots[f].className = dots[f].className.replace(" active", "");
+            }
+            //console.log(Array.from(slidestwo))
+            slidestwo[slideIndextwo-1].style.display = "block";  
+            dots[slideIndextwo-1].className += " active";
+            setTimeout(showSlidestwo, 2000); // Change image every 2 seconds
+        }
+        </script>
 {% endblock %}

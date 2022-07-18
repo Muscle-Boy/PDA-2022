@@ -10,7 +10,7 @@
 }
 
 #text-input-results-back-block {
-    background-color: #DEF2F1;
+    background-color: white;
     width: 10em;
     height: 2em;
     margin-right: auto;
@@ -25,7 +25,7 @@
 }
 
 #text-input-results-back-block:hover {
-    background-color: #def2f1ab;
+    background-color: #D3D3D3;
 }
 
 #text-input-results-back-block:active {
@@ -34,7 +34,7 @@
 }
 
 #text-input-empty-block {
-    background-color: #DEF2F1;
+    background-color: white;
     height: 15em;
     border-radius: 25px;
     border: 1px solid black;
@@ -43,16 +43,107 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 2em;
 }
 
 #text-input-article-block {
-    background-color: #DEF2F1;
-    height: 50em;
-    border-radius: 25px;
+    border-radius: 10px;
     border: 1px solid black;
-    box-sizing: border-box;
-    box-shadow: 5px 10px #888888;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    padding: 10px;
+    margin-bottom: 1.5em;
+}
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#mininavbar {
+    width: 100%;
+    background-color: pink;
+}
+
+button {
+    float: right;
+    width: 3%;
+    margin-right: 2px;
+    margin-top: 2px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#overflowtable {
+    overflow-y: scroll;
+    overflow-x: scroll;
+}
+
+#overflowtable::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#overflowtable {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+table {
+    width: 99%;
+    border-collapse: collapse;
+    text-align: left;
+    border-bottom: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+th {
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+    font-family: serif;
+    font-weight: 100;
+    background-color: black;
+    color: white;
+}
+
+td,
+th {
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    text-align: left;
+    padding: 8px 1px;
+
+}
+
+td {
+    padding-right: 10px;
+}
+
+tr:nth-child(even) {
+    background-color: lightgray;
+}
+
+/*remove a stuff*/
+td a {
+    text-decoration: none;
+    color: black;
+}
+
+td a:hover {
+    text-decoration: none;
+    color: grey;
+    transition: 0.6s ease-out;
+}
+
+td img {
+    width: 20px;
+    height: 20px;
+}
+
+tr {
+    width: 100%;
 }

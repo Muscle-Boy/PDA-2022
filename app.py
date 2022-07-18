@@ -5,10 +5,10 @@ import pandas as pd
 # _____________________________________________ Flask Configurations ________________________________________________
 
 IS_LOCAL_DEPLOYMENT = False
+ALLOWED_EXTENSIONS = {'xlsx'}
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = '1da204f539bfd15c3c5a85e1397f8052'
-ALLOWED_EXTENSIONS = {'xlsx'}
 
 # _____________________________________________ Mainpage Route ______________________________________________________
 
@@ -44,41 +44,32 @@ def text_input():
         else:
             response = requests.post('http://main-service:5010/text-input', json=input_json)
 
-        return redirect('/text-input')
+        return redirect('/text-input/results')
 
 
-@app.route('/text-input/results', methods=['GET'])
+@app.route('/text-input/results', methods=['GET', 'POST'])
 def text_input_results():
-
-    if IS_LOCAL_DEPLOYMENT:
-        response = requests.get('http://localhost:8010/text-input/results')
-    else:
-        response = requests.get('http://main-service:5010/text-input/results')
-    result_list = response.json()
-
-    return render_template('text-input-results.html', result_list=result_list)
-
-
-@app.route('/text-input/results/<id>', methods=['GET', 'DELETE'])
-def text_input_results_indiv(id):
 
     if request.method == 'GET':
         if IS_LOCAL_DEPLOYMENT:
-            response = requests.get('http://localhost:8010/text-input/results/'+f'{id}')
+            response = requests.get('http://localhost:8010/text-input/results')
         else:
-            response = requests.get('http://main-service:5010/text-input/results/'+f'{id}')
+            response = requests.get('http://main-service:5010/text-input/results')
+        result_list = response.json()
 
-        result = response.json()
+        return render_template('text-input-results.html', result_list=result_list)
 
-        return render_template('text-input-results-indiv.html', result=result)
+    elif request.method == 'POST':
+        delete_id_dict = request.form.to_dict()
+        id = delete_id_dict['id']
 
-    elif request.method == 'DELETE':
         if IS_LOCAL_DEPLOYMENT:
             response = requests.delete('http://localhost:8010/text-input/results/'+f'{id}')
         else:
             response = requests.delete('http://main-service:5010/text-input/results/'+f'{id}')
 
         return redirect('/text-input/results')
+
 
 # _____________________________________________ Batch Processing Routes _____________________________________________
 
@@ -105,38 +96,34 @@ def batch_processing():
             response = requests.post('http://localhost:8010/batch-processing', json=input_json)
         else:
             response = requests.post('http://main-service:5010/batch-processing', json=input_json)
-
-        if response.status_code == 201:
-            return redirect(request.url)
-
-        elif response.status_code == 404:
-            return redirect(request.url)
         
-        return redirect(request.url)
+        return redirect('/batch-processing/results')
 
 
-@app.route('/batch-processing/results', methods=['GET'])
+@app.route('/batch-processing/results', methods=['GET', 'POST'])
 def batch_processing_results():
 
-    if IS_LOCAL_DEPLOYMENT:
-        response = requests.get('http://localhost:8010/batch-processing/results/'+f'{id}')
-    else:
-        response = requests.get('http://main-service:5010/batch-processing/results/'+f'{id}')
+    if request.method == 'GET':
+        if IS_LOCAL_DEPLOYMENT:
+            response = requests.get('http://localhost:8010/batch-processing/results')
+        else:
+            response = requests.get('http://main-service:5010/batch-processing/results')
 
-    result = response.json()
+        result_list = response.json()
 
-    return render_template('batch-processing-results.html', result=result)
+        return render_template('batch-processing-results.html', result_list=result_list)
 
+    elif request.method == 'POST':
+        delete_id_dict = request.form.to_dict()
+        id = delete_id_dict['id']
 
-@app.route('/batch-processing/results/<id>', methods=['GET', 'DELETE'])
-def batch_processing_results_indiv(id):
+        if IS_LOCAL_DEPLOYMENT:
+            response = requests.delete('http://localhost:8010/batch-processing/results/'+f'{id}')
+        else:
+            response = requests.delete('http://main-service:5010/batch-processing/results/'+f'{id}')
 
-    if IS_LOCAL_DEPLOYMENT:
-        response = requests.delete('http://localhost:8010/batch-processing/results/'+f'{id}')
-    else:
-        response = requests.delete('http://main-service:5010/batch-processing/results/'+f'{id}')
+        return redirect('/batch-processing/results')
 
-    return render_template('batch-processing-results-indiv.html')
 
 # _____________________________________________ Helper Functions ____________________________________________________
 
