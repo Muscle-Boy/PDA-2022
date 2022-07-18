@@ -1,10 +1,18 @@
-FROM python:3.9
+FROM ubuntu:20.04
 
 ENV APP_HOME /app
 
 WORKDIR $APP_HOME
 
 COPY . ./
+
+
+RUN apt update     
+
+RUN apt install mongodb -y && apt install python3-pip -y
+
+RUN service mongodb start
+
 
 RUN pip install --upgrade pip
 
