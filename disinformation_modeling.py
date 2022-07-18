@@ -10,6 +10,7 @@ classifier = pipeline("sentiment-analysis", model="distilbert-base-uncased-finet
 
 def sentiment_analysis(input_text):
     result_dict = classifier(input_text)[0]
+    result_dict['score'] = round(result_dict['score'] * 100, 2)
     
     return result_dict
 
@@ -63,7 +64,7 @@ def disinformation_analysis(input_text, trusted_sources, article_count, is_batch
         text += " OR"
 
     search_term = text[:-3]
-    # print(search_term)
+    
     url_list = search(search_term, tld="co.in", num=article_count, stop=article_count, pause=2)
 
     headers = { 'accept':'*/*',
@@ -123,16 +124,23 @@ def disinformation_analysis(input_text, trusted_sources, article_count, is_batch
 
     try:
         true_score = round(sum(similarity_list) / len(similarity_list)*100, 2)
-        print(f"The Input Text is likely to be {true_score}% true.")
 
-        if true_score > 50:
+        if true_score > 60:
+            if true_score < 90:
+                true_score += 10
             result = f"True with {true_score}% likelihood"
+            
         else:
-            result = f"False with {100 - true_score}% likelihood"
+            true_score = 100 - true_score
+            if true_score < 90:
+                true_score += 10
+            result = f"False with {true_score}% likelihood"
 
     except Exception as e:
-        true_score = None
+        result = None
         print(f"Score Error! {e}")
+
+    print(result)
 
     return article_list, search_term, result
         

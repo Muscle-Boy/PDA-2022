@@ -13,41 +13,39 @@ app = Flask(__name__)
 
 @app.route('/text-input', methods=['POST'])
 def text_input():
-    
-    if request.is_json:
-        
-        try:
-            input_json = request.get_json()
 
-            input_text = input_json["input_text"]
-            trusted_sources = input_json["trusted_sources"]
-            article_count = input_json["article_count"]
+    try:
+        input_json = request.get_json()
 
-            article_list, search_term, result = disinformation_analysis(input_text, trusted_sources, article_count, False)
+        input_text = input_json["input_text"]
+        trusted_sources = input_json["trusted_sources"]
+        article_count = input_json["article_count"]
 
-            sentiment_dict = sentiment_analysis(input_text)
+        article_list, search_term, result = disinformation_analysis(input_text, trusted_sources, article_count, False)
 
-            return_json = {
-                "input_text" : input_text,
-                "search_term" : search_term,
-                "result" : result,
-                "sentiment_label" : sentiment_dict['label'],
-                "sentiment_score" : sentiment_dict['score'],
-                "date_created": datetime.now(),
-                "Articles" : [
-                    {
-                        "url" : article.url,
-                        "title" : article.title,
-                        "full_article" : article.full_article,
-                        "summarized_article" : article.summarized_article,
-                        "similarity_score" : article.similarity_score
-                    } for article in article_list
-                ]
-            }
+        sentiment_dict = sentiment_analysis(input_text)
 
-            return jsonify(return_json), 200
-        except Exception as e:
-            return f"{e}", 404
+        return_json = {
+            "input_text" : input_text,
+            "search_term" : search_term,
+            "result" : result,
+            "sentiment_label" : sentiment_dict['label'],
+            "sentiment_score" : sentiment_dict['score'],
+            "date_created": datetime.now(),
+            "Articles" : [
+                {
+                    "url" : article.url,
+                    "title" : article.title,
+                    "full_article" : article.full_article,
+                    "summarized_article" : article.summarized_article,
+                    "similarity_score" : article.similarity_score
+                } for article in article_list
+            ]
+        }
+
+        return jsonify(return_json), 200
+    except Exception as e:
+        return f"{e}", 404
 
 # _____________________________________________ Batch Processing Routes _____________________________________________
 
