@@ -5,7 +5,7 @@ metadata:
   labels:
     app: main-server
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: main-server
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: main
-        image: ....
+        image: ryanangweihao/rang012_docker_repository:Disinformation_JIECHUNG
         ports:
         - containerPort: 8010
       imagePullSecrets:

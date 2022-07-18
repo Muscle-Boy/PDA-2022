@@ -1,20 +1,10 @@
-FROM ubuntu:20.04
+FROM python:3.9
 
 ENV APP_HOME /app
 
 WORKDIR $APP_HOME
 
 COPY . ./
-
-
-RUN apt update     
-
-RUN apt install mongodb -y && apt install python3-pip -y \
-&& apt install curl -y && apt install iputils-ping -y \
-&& apt install traceroute -y
-
-RUN service mongodb start
-
 
 RUN pip install --upgrade pip
 

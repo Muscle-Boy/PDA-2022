@@ -33,8 +33,7 @@ def text_input():
         input_json = request.get_json()
 
         if IS_LOCAL_DEPLOYMENT:
-            #response = requests.post('http://localhost:8020/text-input', json=input_json)
-            response = requests.post('http://disinformation-service:5020/text-input', json=input_json)
+            response = requests.post('http://localhost:8020/text-input', json=input_json)
         else:
             response = requests.post('http://disinformation-service:5020/text-input', json=input_json)
         if response.status_code == 200:
@@ -94,8 +93,7 @@ def batch_processing():
         input_json = request.get_json()
         
         if IS_LOCAL_DEPLOYMENT:
-            #response = requests.post('http://localhost:8020/batch-processing', json=input_json)
-            response = requests.post('http://disinformation-service:5020/batch-processing', json=input_json)
+            response = requests.post('http://localhost:8020/batch-processing', json=input_json)
         else:
             response = requests.post('http://disinformation-service:5020/batch-processing', json=input_json)
         if response.status_code == 200:
@@ -152,7 +150,6 @@ def parse_json(data):
 
 if __name__ == "__main__":
     if IS_LOCAL_DEPLOYMENT:
-        #app.run(debug=True, port=8010) # host="0.0.0.0"
-        app.run(host="0.0.0.0", port=8010) 
+        app.run(debug=True, port=8010) # host="0.0.0.0"
     else:
         app.run(host="0.0.0.0", port=8010)
