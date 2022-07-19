@@ -5,8 +5,6 @@ from datetime import datetime
 
 # _____________________________________________ Flask Configurations ________________________________________________
 
-IS_LOCAL_DEPLOYMENT = False
-
 app = Flask(__name__)
 
 # _____________________________________________ Text Input Routes ___________________________________________________
@@ -16,7 +14,6 @@ def text_input():
 
     try:
         input_json = request.get_json()
-
         input_text = input_json["input_text"]
         trusted_sources = input_json["trusted_sources"]
         article_count = input_json["article_count"]
@@ -89,7 +86,4 @@ def batch_processing():
 # _____________________________________________ Helper Functions ____________________________________________________
 
 if __name__ == "__main__":
-    if IS_LOCAL_DEPLOYMENT:
-        app.run(debug=True, port=8020) # host="0.0.0.0"
-    else:
-        app.run(host="0.0.0.0", port=8020)
+    app.run(host="0.0.0.0", port=8020)  # Use "0.0.0.0" when deploying on kubernetes since kubernetes will assign an IP address (that is not "127.." | localhost!) to the container
