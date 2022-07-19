@@ -5,7 +5,7 @@ metadata:
   labels:
     app: main-server
 spec:
-  replicas: 3
+  replicas: 1         # Good practice to set as '1' when stil in TEST/DEV stage
   selector:
     matchLabels:
       app: main-server
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: main
-        image: ryanangweihao/rang012_docker_repository:Disinformation_JIECHUNG
+        image: ...
         ports:
         - containerPort: 8010
       imagePullSecrets:
