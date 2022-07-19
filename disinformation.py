@@ -17,15 +17,15 @@ def text_input():
         input_text = input_json["input_text"]
         trusted_sources = input_json["trusted_sources"]
         article_count = input_json["article_count"]
-        result_model = ''
-        article_list, search_term, result_model = disinformation_analysis(input_text, trusted_sources, article_count, False)
+        
+        article_list, search_term, result = disinformation_analysis(input_text, trusted_sources, article_count, False)
 
         sentiment_dict = sentiment_analysis(input_text)
 
         return_json = {
             "input_text" : input_text,
             "search_term" : search_term,
-            "result" : result_model,
+            "result" : result,
             "sentiment_label" : sentiment_dict['label'],
             "sentiment_score" : sentiment_dict['score'],
             "date_created": datetime.now(),
