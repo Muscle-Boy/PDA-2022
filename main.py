@@ -4,24 +4,21 @@ import json
 from bson import json_util
 from bson.objectid import ObjectId
 import requests
-# from datetime import datetime
 
 # _____________________________________________ Flask Configurations ________________________________________________
-
-IS_LOCAL_DEPLOYMENT = True
 
 app = Flask(__name__)
 # app.config["SECRET_KEY"] = '1da204f539bfd15c3c5a85e1397f8052'
 
 # _____________________________________________ MongoDB Configurations ______________________________________________
 
-if IS_LOCAL_DEPLOYMENT:
-    app.config["MONGO_URI"] = "mongodb://localhost:27017/local"
-else:
-    app.config["MONGO_URI"] = "mongodb://mongo-service:5030/local"
-
+# MongoDB will be installed within the same container as the main module, hence "localhost"
+app.config["MONGO_URI"] = "mongodb://localhost:27017/local"     # IMPORTANT: We will be using the "local" database already provided by MongoDB upon installation
 mongo = PyMongo(app)
+
+# Creating a "TextInputDB" collection and giving it an instance
 TextInputDB = mongo.db.TextInputDB
+# " " "
 BatchProcessingDB = mongo.db.BatchProcessingDB
 
 # _____________________________________________ Text Input Routes ___________________________________________________
@@ -86,12 +83,8 @@ def text_input_results_indiv(id):
 def batch_processing():
 
     try:
-        input_json = request.get_json()
-        
-        if IS_LOCAL_DEPLOYMENT:
-            response = requests.post('http://localhost:8020/batch-processing', json=input_json)
-        else:
-            response = requests.post('http://disinformation-service:5020/batch-processing', json=input_json)
+        input_json = request.get_json()        
+        response = requests.post('http://disinformation-service:5020/batch-processing', json=input_json)
         if response.status_code == 200:
             output_json = response.json()
         elif response.status_code == 404:
@@ -145,7 +138,4 @@ def parse_json(data):
     return json.loads(json_util.dumps(data))
 
 if __name__ == "__main__":
-    if IS_LOCAL_DEPLOYMENT:
-        app.run(host="0.0.0.0", port=8010) # host="0.0.0.0"
-    else:
-        app.run(host="0.0.0.0", port=8010)
+    app.run(host="0.0.0.0", port=8010)
