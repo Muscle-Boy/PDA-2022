@@ -13,7 +13,8 @@ app = Flask(__name__)
 # _____________________________________________ MongoDB Configurations ______________________________________________
 
 # MongoDB will be installed within the same container as the main module, hence "localhost"
-app.config["MONGO_URI"] = "mongodb://localhost:27017/local"     # IMPORTANT: We will be using the "local" database already provided by MongoDB upon installation
+#app.config["MONGO_URI"] = "mongodb://localhost:27017/local"     # IMPORTANT: We will be using the "local" database already provided by MongoDB upon installation
+app.config["MONGO_URI"] = "mongodb://mongo-service:5030/local"
 mongo = PyMongo(app)
 
 # Creating a "TextInputDB" collection and giving it an instance
