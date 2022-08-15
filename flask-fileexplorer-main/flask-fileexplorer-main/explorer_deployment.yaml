@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: explorer-deployment
+  labels:
+    app: explorer-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: explorer-server
+  template:
+    metadata:
+      labels:
+        app: explorer-server
+    spec:
+      containers:
+      - name: file-explorer
+        image: tegexplore/pda-2022:main-8cca576
+        ports:
+        - containerPort: 80
+      imagePullSecrets:
+      - name: dockercred
